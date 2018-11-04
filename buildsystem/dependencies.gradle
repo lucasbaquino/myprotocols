@@ -1,0 +1,103 @@
+allprojects {
+    repositories {
+        jcenter()
+        google()
+    }
+}
+
+ext {
+    // Android
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+    androidApplicationId = 'mobi.lucasborges.myprotocols'
+    androidVersionCode = 1
+    androidVersionName = "0.1.0.18110322"
+    androidBuildTools = '28.0.3'
+
+    // Libraries
+    appCompatVersion = '1.0.0-beta01'
+    navigationFragmentVersion = '1.0.0-alpha07'
+    navigationUiFragmentVersion = '1.0.0-alpha07'
+    navigationKtxVersion = '1.0.0-alpha07'
+    navigationUiKtxVersion = '1.0.0-alpha07'
+    androidXCoreVersion = '1.0.0'
+    constraintLayoutVersion = '1.1.2'
+
+    // Testing
+    espressoVersion = '3.0.1'
+    jUnitVersion = '4.12'
+    mockitoVersion = '2.8.47'
+
+    // ALL DEPENDENCIES
+    allDependencies = [
+            // Kotlin
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            // AAC and Support Libraries
+            appCompat               :   "androidx.appcompat:appcompat:${appCompatVersion}",
+            navigationFragment      :   "android.arch.navigation:navigation-fragment:${navigationFragmentVersion}",
+            navigationUiFragment    :   "android.arch.navigation:navigation-ui:${navigationUiFragmentVersion}",
+            navigationFragmentKtx   :   "android.arch.navigation:navigation-fragment-ktx:${navigationKtxVersion}",
+            navigationUiFragmentKtx :   "android.arch.navigation:navigation-fragment-ktx:${navigationUiKtxVersion}",
+            androidXCore            :   "androidx.core:core-ktx:${androidXCoreVersion}",
+            constraintLayout        :   "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+    ]
+
+    allTestDependencies = [
+            junit          : "junit:junit:${jUnitVersion}",
+            mockito        : "org.mockito:mockito-core:${mockitoVersion}",
+    ]
+
+    allAndroidTestDependencies = [
+            espresso: "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+    ]
+
+    // APP DEPENDENCIES
+    appDependencies = [
+            allDependencies.appCompat,
+            allDependencies.navigationFragment,
+            allDependencies.navigationUiFragment,
+            allDependencies.navigationFragmentKtx,
+            allDependencies.navigationUiFragmentKtx,
+            allDependencies.androidXCore,
+            allDependencies.constraintLayout
+    ]
+
+    // APP TEST DEPENDENCIES
+    appTestDependencies = [
+            allTestDependencies.junit,
+            allTestDependencies.mockito
+    ]
+
+    // APP ANDROID TEST DEPENDENCIES
+    appAndroidTestDependencies = [
+            allAndroidTestDependencies.espresso
+    ]
+
+    // DOMAIN DEPENDENCIES
+    domainDependencies = [
+
+    ]
+
+    // API DEPENDENCIES
+    apiDependencies = [
+            allDependencies.kotlin
+    ]
+
+    // DOMAIN TESTE DEPENDENCIES
+    domainTestDependencies = [
+            allTestDependencies.junit,
+            allTestDependencies.mockito
+
+    ]
+
+    // DATA DEPENDENCIES
+    dataDependencies = [
+
+    ]
+
+    dataTestDependencies = [
+            allTestDependencies.junit,
+            allTestDependencies.mockito
+    ]
+}

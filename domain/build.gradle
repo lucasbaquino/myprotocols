@@ -1,0 +1,19 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+
+dependencies {
+    def domainDependencies = rootProject.ext.domainDependencies
+    def apiDependencies = rootProject.ext.apiDependencies
+    def domainTestDependencies = rootProject.ext.domainTestDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    apiDependencies.each { v -> api v }
+
+    // Unit test
+    domainTestDependencies.each { v -> testImplementation v }
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
